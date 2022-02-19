@@ -15,6 +15,11 @@ class Attribute extends Model
         'slug',
     ];
 
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
     public function values()
     {
         return $this->hasMany(Value::class);

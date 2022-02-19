@@ -41,15 +41,8 @@ class ProductCrudController extends CrudController
     {
         CRUD::column('name');
         CRUD::column('slug');
-
-        $this->crud->addColumn([
-            'name' => 'category_id',
-            'searchLogic' => function ($query, $column, $searchTerm) {
-                $query->orWhereHas('category', function ($q) use ($column, $searchTerm) {
-                    $q->where('name', 'like', '%' . $searchTerm . '%');
-                });
-            }
-        ]);
+        CRUD::column('category');
+        CRUD::column('values');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -70,7 +63,8 @@ class ProductCrudController extends CrudController
 
         CRUD::field('name');
         CRUD::field('slug');
-        CRUD::field('category_id');
+        CRUD::field('category');
+        CRUD::field('values');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

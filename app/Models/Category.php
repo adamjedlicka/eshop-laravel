@@ -15,6 +15,11 @@ class Category extends Model
         'slug',
     ];
 
+    public function attributes()
+    {
+        return $this->belongsToMany(Attribute::class);
+    }
+
     public function products()
     {
         return $this->hasMany(Product::class);

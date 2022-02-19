@@ -19,6 +19,15 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
         });
+
+        Schema::create('attribute_category', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('attribute_id');
+            $table->foreign('attribute_id')->references('id')->on('attributes');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->unique(['attribute_id', 'category_id']);
+        });
     }
 
     /**
