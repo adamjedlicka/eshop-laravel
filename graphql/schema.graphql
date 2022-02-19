@@ -1,0 +1,35 @@
+type Query {
+    product(slug: String! @eq): Product @find
+    products: [Product!]! @all
+}
+
+type Product {
+    id: ID!
+    name: String!
+    slug: String!
+    category: Category! @belongsTo
+    values: [Value!]! @belongsToMany
+}
+
+type Category {
+    id: ID!
+    name: String!
+    slug: String!
+    attributes: [Attribute!]! @belongsToMany
+    products: [Product!]! @hasMany
+}
+
+type Attribute {
+    id: ID!
+    name: String!
+    slug: String!
+    categories: [Category!]! @belongsToMany
+    values: [Value!]! @hasMany
+}
+
+type Value {
+    id: ID!
+    name: String!
+    attribute: Attribute! @belongsTo
+    products: [Product!]! @belongsToMany
+}

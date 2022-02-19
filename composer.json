@@ -11,7 +11,9 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14",
-        "laravel/tinker": "^2.7"
+        "laravel/telescope": "^4.7",
+        "laravel/tinker": "^2.7",
+        "nuwave/lighthouse": "^5.40"
     },
     "require-dev": {
         "backpack/generators": "^3.1",
