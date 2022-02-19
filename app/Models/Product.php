@@ -25,4 +25,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Value::class);
     }
+
+    public function scopeValues($query, $values)
+    {
+        return $query->whereHas('values', fn ($query) => $query->whereIn('values.id', $values));
+    }
 }

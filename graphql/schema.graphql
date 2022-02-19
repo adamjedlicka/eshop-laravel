@@ -1,6 +1,11 @@
 type Query {
     product(slug: String! @eq): Product @find
-    products: [Product!]! @all
+    products(filter: ProductFilter): [Product!]! @paginate(defaultCount: 10)
+}
+
+input ProductFilter {
+    categories: [Int!] @in(key: "category_id")
+    values: [Int!] @scope
 }
 
 type Product {
