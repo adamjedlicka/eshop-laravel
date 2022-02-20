@@ -1,11 +1,18 @@
 type Query {
     product(slug: String! @eq): Product @find
     products(filter: ProductFilter): [Product!]! @paginate(defaultCount: 10)
+    aggregations(filter: ProductFilter): [Aggregation!]!
 }
 
 input ProductFilter {
     categories: [Int!] @in(key: "category_id")
     values: [Int!] @scope
+}
+
+type Aggregation {
+    id: ID!
+    count: Int!
+    name: String!
 }
 
 type Product {
